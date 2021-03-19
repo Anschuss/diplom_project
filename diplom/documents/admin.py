@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import TenderDoc
 
-# Register your models here.
+
+admin.site.register(TenderDoc)

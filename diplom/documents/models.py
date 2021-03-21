@@ -1,27 +1,15 @@
 from django.db import models
 
 
-## Products
-
-class BrandProduct(models.Model):
-    brand = models.CharField(max_length=120, unique=True)
-
-
-class TypeProduct(models.Model):
-    name = models.CharField(max_length=120, unique=True)
-
-
-class Product(models.Model):
-    name = models.CharField(max_length=120)
-    type = models.ForeignKey(TypeProduct, on_delete=models.CASCADE)
-    brand = models.ForeignKey(BrandProduct, on_delete=models.CASCADE)
-
-
 ## Documents
 
 class Clinic(models.Model):
     name = models.CharField(max_length=120, unique=True)
     state = models.BooleanField(default=True)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"{self.name}, {self.state}"
 
 
 class Sale(models.Model):
@@ -33,7 +21,10 @@ class Sale(models.Model):
     price = models.PositiveIntegerField()
     slug = models.SlugField(unique=True)
     guarantee = models.PositiveIntegerField(default=0)
-    product = models.ManyToManyField(Product)
+    product = models.CharField(max_length=256, blank=True)
+
+    def __str__(self):
+        return f"{self.customer}, {self.price}, {self.product}"
 
 
 class RetailSales(Sale):

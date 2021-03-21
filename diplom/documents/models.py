@@ -3,9 +3,19 @@ from django.db import models
 
 ## Documents
 
+
+class TenderType(models.Model):
+    name = models.CharField(max_length=120, unique=True)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Clinic(models.Model):
     name = models.CharField(max_length=120, unique=True)
     state = models.BooleanField(default=True)
+    address = models.CharField(max_length=200, unique=True)
     description = models.TextField(blank=True)
 
     def __str__(self):
@@ -17,7 +27,7 @@ class Sale(models.Model):
         abstract = True
 
     customer = models.CharField(max_length=120, verbose_name="Заказчик")
-    document = models.ImageField(verbose_name="Документ")
+    document = models.FileField(verbose_name="Документ")
     price = models.PositiveIntegerField()
     slug = models.SlugField(unique=True)
     guarantee = models.PositiveIntegerField(default=0)
@@ -34,3 +44,4 @@ class RetailSales(Sale):
 class TenderDoc(Sale):
     organizer = models.CharField(max_length=240, verbose_name="Организатор закупки")
     clinic = models.ForeignKey(Clinic, on_delete=models.CASCADE, blank=False, null=False, verbose_name="Клиника")
+    type_tender = models.ForeignKey(TenderType, on_delete=models.CASCADE, blank=True, verbose_name="Тип тендера")

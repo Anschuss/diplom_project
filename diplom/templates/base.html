@@ -33,7 +33,7 @@
         float: left;
         left: 45px;
         top: 50px;
-         margin-top: 15px;
+        margin-top: 15px;
         margin-bottom: 15px;
         background-size: contain;
         background-repeat: no-repeat;
@@ -56,9 +56,19 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Pricing</a>
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link dropdown-toggle" href="{% url "doc:tenders" %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    Тендеры
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url "doc:tenders" %}">Все Тендеры</a></li>
+                    <li><a class="dropdown-item" href="#">Тендеры в разработке</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Добавить Тендер</a></li>
+                </ul>
+                <a class="nav-link active" href="#">Pricing</a>
             </div>
         </div>
     </div>

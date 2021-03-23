@@ -56,19 +56,32 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link dropdown-toggle" href="{% url "doc:tenders" %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" href="{% url "doc:sales" ct_model="tenderdoc" %}" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown"
                    aria-expanded="false">
                     Тендеры
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url "doc:tenders" %}">Все Тендеры</a></li>
+                    <li><a class="dropdown-item" href="{% url "doc:sales" ct_model="tenderdoc" %}">Все Тендеры</a></li>
                     <li><a class="dropdown-item" href="#">Тендеры в разработке</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li><a class="dropdown-item" href="#">Добавить Тендер</a></li>
                 </ul>
-                <a class="nav-link active" href="#">Pricing</a>
+                <a class="nav-link dropdown-toggle" href="{% url "doc:sales" ct_model="retailsales" %}"
+                   id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    Розничные продажи
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="">Все продажи</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Добавить добавить документ</a></li>
+                </ul>
             </div>
         </div>
     </div>

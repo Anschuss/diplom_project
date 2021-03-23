@@ -1,5 +1,23 @@
 from django.db import models
 from django.utils.text import slugify
+from django.contrib.contenttypes.models import ContentType
+from django.urls import reverse
+
+
+class LatestDoxManager:
+
+    @staticmethod
+    def get_doc_for_page(*args, **kwargs):
+        dox = []
+        ct_models = ContentType.objects.filter(model__in=args)
+        for ct_model in ct_models:
+            model_doc = ct_model.model_class()._base_manager.all().order_by('id')
+            dox.extend(model_doc)
+        return dox
+
+
+class LatestDox:
+    object = LatestDoxManager
 
 
 ## Documents
@@ -45,7 +63,7 @@ class Sale(models.Model):
     price = models.PositiveIntegerField(verbose_name="Цена")
     slug = models.SlugField(unique=True)
     guarantee = models.PositiveIntegerField(default=0, verbose_name="Гарантийный срок")
-    type_product = models.ForeignKey(TypeProduct, on_delete=models.CASCADE,verbose_name="тип мед услуг")
+    type_product = models.ForeignKey(TypeProduct, on_delete=models.CASCADE, verbose_name="тип мед услуг")
     product = models.CharField(max_length=256, blank=True)
 
     def __str__(self):
@@ -57,7 +75,8 @@ class Sale(models.Model):
 
 
 class RetailSales(Sale):
-    pass
+    def get_absolute_url(self):
+        return reverse("doc:tenders", kwargs={"ct_model": "retailsales", "slug": self.slug})
 
 
 class TenderDoc(Sale):
@@ -70,3 +89,6 @@ class TenderDoc(Sale):
     def save(self, *args, **kwargs):
         self.slug = slugify(f'{self.organizer} {self.clinic} {self.type_tender} {self.number_contract}')
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("doc:tenders", kwargs={"ct_model": "tenderdoc", "slug": self.slug})

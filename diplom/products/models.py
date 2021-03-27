@@ -284,3 +284,151 @@ class FluoroscopicSystem(models.Model):
 
 class FluoroscopySystem(FluoroscopicSystem, Product):
     pass
+
+
+class XRayFlatPanelDetector(Product):
+    pass
+
+
+class DigitalXRaySystem(Product):
+    pass
+
+
+class XRayDensitometer(Product):
+    nominal_focal_length = models.FloatField(verbose_name="Номинальное фокусное расстояние")
+    maximum_tube_voltage = models.PositiveIntegerField(verbose_name="Максимальное напряжение трубки")
+    minimum_tube_voltage = models.PositiveIntegerField(verbose_name="Минимальное напряжение трубки")
+    rated_tube_current = models.PositiveIntegerField(verbose_name="Номинальный ток трубки")
+    cathode = models.CharField(max_length=64, verbose_name="Катод")
+    anode = models.CharField(max_length=64, verbose_name="Анод")
+    maximum_heat_capacity_of_x_ray_tube = models.PositiveIntegerField(
+        verbose_name="Максимальная теплоемкость рентгеновской трубки")
+    rated_input_power_of_anode = models.PositiveIntegerField(verbose_name="Номинальный ток трубки")
+
+
+class XRayComputedTomography(Product):
+    pass
+
+
+# Sterilizers
+
+class SteamSterilizer(Product):
+    pass
+
+
+class LowTemperaturePlasmaSterilizer(Product):
+    pass
+
+
+# Physiotherapy and rehabilitation
+
+class OxygenConcentrator(Product):
+    pass
+
+
+class ExtracorporealMagneticStimulationSystem(Product):
+    pass
+
+
+class ApparatusForElectroAndUltrasoundTherapy(Product):
+    pass
+
+
+class MicrowaveTherapyApparatus(Product):
+    pass
+
+
+class VacuumElectrodeModule(Product):
+    pass
+
+
+class LymphaticDrainageMachine(Product):
+    pass
+
+
+class LumbarAndCervicalTractionMachine(Product):
+    pass
+
+
+class ApparatusForUltraHighFrequencyTherapyAndInductothermy(Product):
+    pass
+
+
+class ShockWaveTherapyMachine(Product):
+    pass
+
+
+class UltrasoundTherapyMachine(Product):
+    pass
+
+
+class ApparatusForElectrotherapy(Product):
+    pass
+
+
+class HeatTherapyMachineAndTekarTherapyMachine(Product):
+    pass
+
+
+# Surgery
+
+class AspiratorType(models.Model):
+    name = models.CharField(max_length=120, verbose_name="Тип Аспиратора")
+
+
+class Aspirator(Product):
+    type_aspirator = models.ForeignKey(AspiratorType, on_delete=models.CASCADE, verbose_name="Тип Аспиратора")
+
+
+class SmokeEvacuator(Product):
+    pass
+
+
+class EHHF(Product):
+    pass
+
+
+class UltrasonicSurgicalSystem(Product):
+    pass
+
+
+class RadiofrequencySurgicalApparatus(Product):
+    pass
+
+
+class OperatingTable(Product):
+    pass
+
+
+class OperatingLight(Product):
+    pass
+
+
+# Ultrasound machine
+
+class UltrasoundSystemType(models.Model):
+    name = models.CharField(max_length=120, verbose_name="Тип УЗИ аппарата")
+
+
+class DiagnosticUltrasoundSystem(Product):
+    type_us_system = models.ForeignKey(UltrasoundSystemType, on_delete=models.CASCADE, verbose_name="Тип УЗИ аппарата")
+
+
+class BlackAndWhiteVideoPrinter(Product):
+    pass
+
+
+# Endoscopy
+
+class EndoscopicCamera(Product):
+    pass
+
+
+class LaparoscopicUnit(Product):
+    pass
+
+
+# Cardiology
+
+class Electrocardiograph(Product):
+    pass

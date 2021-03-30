@@ -1,0 +1,24 @@
+form div {
+    margin-bottom: 25px;
+}
+
+a#header_logo {
+    border: 0;
+    width: 28%;
+    top: 15px;
+    left: 15px;
+    background-image: url("https://www.ordamed.kz/uploads/logo.png");
+}
+
+a#header_logo {
+    width: 116px;
+    height: 80px;
+    zoom: 1;
+    float: left;
+    left: 45px;
+    top: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

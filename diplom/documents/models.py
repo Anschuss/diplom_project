@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
-
+from django.utils import timezone
 
 class LatestDoxManager:
 
@@ -65,6 +65,7 @@ class Sale(models.Model):
     guarantee = models.PositiveIntegerField(default=0, verbose_name="Гарантийный срок")
     type_product = models.ForeignKey(TypeProduct, on_delete=models.CASCADE, verbose_name="тип мед услуг")
     product = models.CharField(max_length=256, blank=True)
+    date = models.DateField(default=timezone.now())
 
     def __str__(self):
         return f"{self.customer}, {self.price}, {self.product}"

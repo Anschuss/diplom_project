@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Добавить тендер
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7">
+                <form method="Post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="button" >
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

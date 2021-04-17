@@ -88,13 +88,37 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </nav>
                             </div>
                         </div>
                     </div>
                     <div class="border">
                         <span></span>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="sidebar__item col-lg-12">
+                                <div class="sidebar__block_link">
+                                    <div class="sidebar__link col-lg-12">
+                                        <img class="col-lg-6" src="{% static "img/presentation.svg" %}" alt="">
+                                        <div class="sidebar__link col-lg-6">
+                                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                                                       href="#" role="button" aria-expanded="false">Презентации</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item"
+                                                               href="{% url "presentation:presentation_list" %}">Презентации</a></li>
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                               href="{% url "presentation:add_presentation" %}">Добавить презентацию</a>
+                                                        </li>
+                                                    </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

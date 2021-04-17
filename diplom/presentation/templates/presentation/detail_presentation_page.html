@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ object.product }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="body_detail col-lg-12">
+                <div class="body_detail__body">
+                    <div class="body_detail__header">
+                        <h2>
+                            {{ object.number_tender }}
+                        </h2>
+                    </div>
+                    <div class="list_info">
+                        <div class="body_detail__item">
+                            <p><span>Статус:</span> {{ object.status }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <p><span>Описание:</span></p>
+                            <p>{{ object.description }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <div class="btn">
+                                <a href="{{ MEDIA_URL }}{{ object.document }}">
+                                    Документ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import View, CreateView, DetailView, ListView
 from .models import LatestDox, TenderDoc, RetailSales, StatusTender
 from .forms import AddedTenderForm, AddedSaleForm

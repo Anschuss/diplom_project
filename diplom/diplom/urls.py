@@ -7,5 +7,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('documents.urls', namespace='doc')),
+    path('presentation/', include('presentation.urls', namespace='presentation')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

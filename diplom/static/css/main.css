@@ -1,24 +1,217 @@
+body {
+    font-family: Roboto, sans-serif;
+    font-weight: normal;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #cc0000;
+}
+
+h4 {
+    font-size: 24px;
+}
+
+ul {
+    list-style: none;
+}
+
 form div {
     margin-bottom: 25px;
 }
 
-a#header_logo {
-    border: 0;
-    width: 28%;
-    top: 15px;
-    left: 15px;
-    background-image: url("https://www.ordamed.kz/uploads/logo.png");
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-a#header_logo {
-    width: 116px;
-    height: 80px;
-    zoom: 1;
-    float: left;
-    left: 45px;
-    top: 50px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    background-size: contain;
-    background-repeat: no-repeat;
+a:hover {
+    color: inherit;
+}
+
+span {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.content {
+    display: flex;
+}
+
+.colm {
+    display: flex;
+    flex-direction: row;
+}
+
+.general {
+    padding-left: 92px;
+}
+
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*nav sidebar*/
+
+.logo {
+    align-items: flex-end;
+}
+
+.logo h2 {
+    font-size: 20px;
+    font-family: Laksaman;
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+.logo h2 > a {
+    color: #ffffff;
+}
+
+.logo img {
+    max-width: 30px;
+    border-radius: 50%;
+}
+
+
+.sidebar {
+    background-color: #cc0000;
+    height: 100%;
+    position: fixed;
+}
+
+.sidebar__body {
+    font-size: 16px;
+    color: #a6a6a6;
+}
+
+.sidebar__header {
+    margin-top: 34px;
+    margin-bottom: 50px;
+}
+
+.sidebar__header_logo {
+    display: flex;
+    align-items: flex-end;
+}
+
+.sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+
+.sidebar__item {
+    margin-bottom: 43px;
+    padding-left: 10%;
+}
+
+.sidebar__block_link {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar__link {
+    display: flex;
+}
+
+.sidebar__link img {
+    width: 18px;
+}
+
+.sidebar__link a {
+    color: #ffffff;
+    opacity: .5;
+    padding-left: 10px;
+    transition-timing-function: ease-out;
+    transition-duration: 0.5s;
+}
+
+.sidebar__link a:hover {
+    opacity: 1;
+    transition-timing-function: ease-in;
+    transition-duration: 0.5s;
+}
+
+.border {
+    width: 100%;
+}
+
+.border span {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.dropdown-menu li {
+    background-color: #ffffff;
+}
+
+li > a.dropdown-item {
+    color: #cc0000;
+}
+
+li > a.dropdown-item:hover {
+    color: #cc0000;
+}
+
+/* content page */
+
+.head {
+    margin-top: 36px;
+    margin-bottom: 62px;
+}
+
+.title {
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+.title h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.body {
+    display: flex;
+    margin-top: 50px;
+    flex-basis: 80%;
+}
+
+.body_detail {
+    margin-top: 30px;
+}
+
+.body_detail__header {
+    margin-bottom: 50px;
+}
+
+.list_info {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.body_detail__item {
+    margin-bottom: 30px;
+}
+
+.body_detail__item p, .btn{
+    margin-left: 40px;
+}
+
+.btn {
+    background-color: #cc0000;
+    padding: 10px 30px;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    color: #ffffff;
+    transition: 0.6s;
+}
+
+.btn:hover {
+    color: #cc0000;
+    background-color: #ffffff;
+    transition: 0.6s;
 }

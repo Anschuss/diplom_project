@@ -1,17 +1,17 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 
-from .models import TenderDoc
+from .models import TenderDoc, RetailSales
 
 
-class AddedDocForm(forms.ModelForm):
-    helper = FormHelper()
+class AddedTenderForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["date"].label = 'Дата добавления'
 
     date = forms.DateField(widget=forms.TextInput(attrs={'type': 'date'}))
+    document = forms.FileField(required=False)
 
     class Meta:
         model = TenderDoc
@@ -20,3 +20,17 @@ class AddedDocForm(forms.ModelForm):
             "type_tender", "status", "price", "guarantee", "type_product",
             "product", "date", "description"
         )
+
+
+class AddedSaleForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["date"].label = 'Дата добавления'
+
+    date = forms.DateField(widget=forms.TextInput(attrs={'type': 'date'}))
+    document = forms.FileField(required=False)
+
+    class Meta:
+        model = RetailSales
+        exclude = ["slug"]

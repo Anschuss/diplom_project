@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ object.product }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="body_detail col-lg-12">
+                <div class="body_detail__body">
+                    <div class="body_detail__header">
+                        <h2>
+                            {{ object.number_contract }}
+                        </h2>
+                    </div>
+                    <div class="list_info">
+                        <div class="body_detail__item">
+                            <p><span>Организатор:</span> {{ object.organizer }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <p><span>Зкупщик:</span> {{ object.customer }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <p><span>ID Клиники:</span> {{ object.clinic_id }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <p><span>ID Тип тендера:</span> {{ object.type_tender_id }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <p><span>ID Тип оборудывания:</span> {{ object.type_product_id }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <p><span>Оборудывание:</span> {{ object.product }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <p><span>Гарантия:</span> {{ object.guarantee }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <p><span>Цена:</span> {{ object.price }}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <p><span>Описание:</span></p>
+                            <p>{{ object.description}}</p>
+                        </div>
+                        <div class="body_detail__item">
+                            <div class="btn">
+                                <a href="{{ MEDIA_URL }}{{ object.document }}">
+                                    Документ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,19 +1,26 @@
 from django.shortcuts import render
-from django.views.generic import View, CreateView
-from .models import LatestDox, TenderDoc
-from .forms import AddedDocForm
+from django.views.generic import View, CreateView, DetailView, ListView
+from .models import LatestDox, TenderDoc, RetailSales, StatusTender
+from .forms import AddedTenderForm, AddedSaleForm
 
 
-class DoxView(View):
-
-    def get(self, request, *args, **kwargs):
-        dox = LatestDox.object.get_doc_for_page(kwargs['ct_model'])
-        return render(request, 'documents/list_page.html', {"dox": dox})
+class VoidView(View):
+    pass
 
 
-class AddDoxView(CreateView):
+class TenderListView(ListView):
     model = TenderDoc
-    form_class = AddedDocForm
+    template_name = "documents/list_page.html"
+
+
+class TenderDetailView(DetailView):
+    model = TenderDoc
+    template_name = "documents/detail_page.html"
+
+
+class AddTenderView(CreateView):
+    model = TenderDoc
+    form_class = AddedTenderForm
     template_name = "documents/add_tender_doc.html"
     success_url = "/"
 

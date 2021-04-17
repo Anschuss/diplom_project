@@ -4,6 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from django.utils import timezone
 
+
 class LatestDoxManager:
 
     @staticmethod
@@ -14,6 +15,15 @@ class LatestDoxManager:
             model_doc = ct_model.model_class()._base_manager.all().order_by('id')
             dox.extend(model_doc)
         return dox
+
+    # @staticmethod
+    # def get_status_doc_page(*args, **kwargs):
+    #     dox = []
+    #     tenders = TenderDoc.objects.all()
+    #     for doc in tenders:
+    #         if doc.status == kwargs["status"]:
+    #             dox.extend(doc)
+    #     return dox
 
 
 class LatestDox:
@@ -59,7 +69,7 @@ class Sale(models.Model):
 
     number_contract = models.CharField(max_length=64, unique=True, verbose_name="Номер договора")
     customer = models.CharField(max_length=120, verbose_name="Заказчик")
-    document = models.FileField(verbose_name="Документ")
+    document = models.FileField(verbose_name="Документ", upload_to="documents")
     price = models.PositiveIntegerField(verbose_name="Цена")
     slug = models.SlugField(unique=True)
     guarantee = models.PositiveIntegerField(default=0, verbose_name="Гарантийный срок")
@@ -77,7 +87,7 @@ class Sale(models.Model):
 
 class RetailSales(Sale):
     def get_absolute_url(self):
-        return reverse("doc:tenders", kwargs={"ct_model": "retailsales", "slug": self.slug})
+        return reverse("doc:retail", kwargs={"ct_model": "retailsales", "slug": self.slug})
 
 
 class TenderDoc(Sale):

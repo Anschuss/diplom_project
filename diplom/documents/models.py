@@ -3,6 +3,7 @@ from django.utils.text import slugify
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class LatestDoxManager:
@@ -72,6 +73,7 @@ class Sale(models.Model):
     document = models.FileField(verbose_name="Документ", upload_to="documents")
     price = models.PositiveIntegerField(verbose_name="Цена")
     slug = models.SlugField(unique=True)
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     guarantee = models.PositiveIntegerField(default=0, verbose_name="Гарантийный срок")
     type_product = models.ForeignKey(TypeProduct, on_delete=models.CASCADE, verbose_name="тип мед услуг")
     product = models.CharField(max_length=256, blank=True)
@@ -83,11 +85,6 @@ class Sale(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(f'{self.customer} {self.price} {self.guarantee} {self.number_contract}')
         super().save(*args, **kwargs)
-
-
-class RetailSales(Sale):
-    def get_absolute_url(self):
-        return reverse("doc:retail", kwargs={"ct_model": "retailsales", "slug": self.slug})
 
 
 class TenderDoc(Sale):

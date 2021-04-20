@@ -1,6 +1,7 @@
+from django.shortcuts import render
 from django.views.generic import View, CreateView, DetailView, ListView
-from .models import LatestDox, TenderDoc, RetailSales, StatusTender
-from .forms import AddedTenderForm, AddedSaleForm
+from .models import LatestDox, TenderDoc, StatusTender
+from .forms import AddedTenderForm
 
 
 class VoidView(View):
@@ -27,3 +28,6 @@ class AddTenderView(CreateView):
         user = self.request.user
         form.instance.user = user
         return super().form_valid(form)
+
+
+

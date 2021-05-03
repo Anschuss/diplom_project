@@ -1,11 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import View, CreateView, DetailView, ListView
+from django.views.generic import TemplateView, CreateView, DetailView, ListView
 from .models import LatestDox, TenderDoc, StatusTender
 from .forms import AddedTenderForm
-
-
-class VoidView(View):
-    pass
 
 
 class TenderListView(ListView):
@@ -30,4 +26,10 @@ class AddTenderView(CreateView):
         return super().form_valid(form)
 
 
+class StatView(TemplateView):
+    template_name = "documents/stats_page.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["qs"] = TenderDoc.objects.all()
+        return context

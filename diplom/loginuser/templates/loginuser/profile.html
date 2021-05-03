@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ request.user.username }}
+{% endblock %}
+
+{% block body %}
+    <style type="text/css">
+        #last {
+            margin-bottom: 30px;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="body_detail col-lg-12">
+                <div class="body_detail__body">
+                    <div class="body_detail__header">
+                        <h2>
+                            {{ request.user.username }}
+                        </h2>
+                    </div>
+                    <div class="list_info">
+                        <div class="body_detail__img">
+                            <img src="{{ user.profile.img }}" alt="">
+                        </div>
+                        <div class="body_detail__item">
+                            <div class="body_item">
+                                <p><span>Имя:</span> {{ request.user.first_name }} </p>
+                            </div>
+                            <div class="body_item">
+                                <p><span>Фамилия:</span> {{ request.user.last_name }} </p>
+                            </div>
+                            <div class="body_item">
+                                <p><span>E-mail:</span> {{ request.user.email }} </p>
+                            </div>
+                            <div class="body_item" id="last">
+                                <p><span>Должность:</span> {{ request.user.profile.position }} </p>
+                            </div>
+                            <div class="btn">
+                            <a href="{% url "login:update" pk=request.user.pk %}">
+                                Изменить
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

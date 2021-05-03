@@ -24,3 +24,22 @@ class LoginForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ["username", "password"]
+
+
+class UserUpdateForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['first_name'].label = "Имя"
+        self.fields['last_name'].label = "Фамилия"
+        self.fields['email'].label = "Почта"
+
+    def clean(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(f'E-mail {email} уже занят')
+        return self.cleaned_data
+
+    class Meta:
+        model = User
+        fields = ["first_name", "last_name", "email"]

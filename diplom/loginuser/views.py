@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View, DetailView, UpdateView
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from .forms import LoginForm
+from .forms import LoginForm, UserUpdateForm
 
 
 class LoginView(View):
@@ -27,7 +27,16 @@ class LoginView(View):
         return render(request, 'loginuser/login.html', {'form': form})
 
 
-class ProfileView(View):
+class ProfileView(DetailView):
+    model = User
+    template_name = 'loginuser/profile.html'
 
-    def get(self, request, *args, **kwargs):
-        user = User.objects.get(user=request.user)
+
+class ProfileUpdateView(UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = "loginuser/update_profile.html"
+    success_url = "/"
+
+
+
